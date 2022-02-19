@@ -10,12 +10,28 @@ import { ApiService } from './api.service';
 import { CookieService } from './cookie.service';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { HeaderComponent } from './admin/header/header.component';
+import { FooterComponent } from './admin/footer/footer.component';
+import { SidebarComponent } from './admin/sidebar/sidebar.component';
+import { DocumentComponent } from './document/document.component';
+import { WordComponent } from './word/word.component';
+import { EmployeeComponent } from './employee/employee.component';
+
+import { TopbarComponent } from './topbar/topbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    HeaderComponent,
+    FooterComponent,
+    SidebarComponent,
+    DocumentComponent,
+    WordComponent,
+    EmployeeComponent,
+    
+    TopbarComponent
   ],
   imports: [
     BrowserModule,
