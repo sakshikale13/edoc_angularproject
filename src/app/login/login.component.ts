@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = new FormGroup({
-      email: new FormControl("", Validators.compose([Validators.required])),
+      email: new FormControl("", Validators.compose([Validators.required,Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)])),
       password: new FormControl("", Validators.compose([Validators.required]))
   
 
@@ -29,7 +29,25 @@ export class LoginComponent implements OnInit {
 
 }
 submit = (user: any) => {
-this.router.navigate(["/admin/dashboard"]);
+// this.router.navigate(["/admin/dashboard"]);
+let apiurl="authentication/login";
+let data = this.api.post(apiurl,
+  {data:user 
+  });
+  data.subscribe((mydata:any)=>{
+  console.log(mydata);
+  if(mydata.data.status=="success"){
+    this.cookie.set("usertype","admin");
+    this.cookie.set("authkey",mydata.data.authkey);
+     this.router.navigate(["/admin/dashboard"]);
+
+  }
+  else{
+    alert("invalid email or password")
+  }
+  });
+  
+  
 }
 }
 
